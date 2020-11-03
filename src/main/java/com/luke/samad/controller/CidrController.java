@@ -2,7 +2,7 @@ package com.luke.samad.controller;
 
 import com.luke.samad.dto.CidrDto;
 import com.luke.samad.dto.CidrInputDto;
-import com.luke.samad.service.IpAddressService;
+import com.luke.samad.service.CidrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +14,10 @@ import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
-public class IpAddressController {
+public class CidrController {
 
     @Autowired
-    private IpAddressService service;
+    private CidrService service;
 
     @PostMapping(value = "/cidr")
     private String addCidr(@RequestBody CidrInputDto input) {

@@ -20,7 +20,7 @@ import java.util.stream.StreamSupport;
 
 @Transactional
 @Service
-public class IpAddressService {
+public class CidrService {
 
     @Autowired
     private AddressRepository addressRepository;
@@ -30,7 +30,8 @@ public class IpAddressService {
 
     public String addCidr(String cidr) {
         Cidr address = Cidr.builder().cidr(cidr).build();
-        address.setAddresses(createAddresses(cidr, address));
+        Set<Address> addresses = createAddresses(cidr, address);
+        address.setAddresses(addresses);
         cidrRepository.save(address);
         return cidr + " added successfully";
     }
@@ -63,12 +64,12 @@ public class IpAddressService {
 
     public String acquired(String ip) {
         updateStatus(ip, "acquired");
-        return ip + " acquired successfully`";
+        return ip + " acquired successfully";
     }
 
     public String release(String ip) {
         updateStatus(ip, "available");
-        return ip + " release successfully`";
+        return ip + " released successfully";
     }
 
     private void updateStatus(String ip, String status) {

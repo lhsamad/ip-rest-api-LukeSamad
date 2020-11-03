@@ -1,10 +1,8 @@
 package com.luke.samad.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class CidrInputDto {
     private String cidr;
 }
