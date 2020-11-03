@@ -57,7 +57,7 @@ public class Address {
 
         return new EqualsBuilder()
             .append(id, address1.id)
-            .append(address, address1.address)
+            .append(ip, address1.ip)
             .isEquals();
     }
 
@@ -65,7 +65,7 @@ public class Address {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
             .append(id)
-            .append(address)
+            .append(ip)
             .toHashCode();
     }
 }
