@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class CidrRepositoryTest {
+public class CidrRepositoryTests {
 
 
     @Autowired

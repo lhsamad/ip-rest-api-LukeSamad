@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
@@ -24,7 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @WebMvcTest(controllers = CidrController.class)
 public class CidrControllerTest {
 
@@ -64,16 +65,14 @@ public class CidrControllerTest {
     @Test
     public void acquired() throws Exception {
         mockMvc.perform(get("/acquire/10.0.0.1"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("10.0.0.1 acquired successfully"));
+            .andExpect(status().isOk());
         verify(cidrService, times(1)).acquired(any(String.class));
     }
 
     @Test
     public void release() throws Exception {
         mockMvc.perform(get("/release/10.0.0.1"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("10.0.0.1 released successfully"));
+            .andExpect(status().isOk());
         verify(cidrService, times(1)).release(any(String.class));
     }
 }

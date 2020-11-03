@@ -24,7 +24,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CidrServiceTest {
+public class CidrServiceTests {
 
     @InjectMocks
     CidrService cidrService;
